@@ -1,0 +1,26 @@
+name: 'increment-calver-action'
+description: 'GitHub Action that increments a CalVer version based on the current latest release'
+author: 'onward-partners'
+inputs:
+  repo:
+    required: false
+    description: 'The report to check for releases. Example: onward-partners/increment-calver-action'
+  tagPrefix:
+    required: false
+    description: 'The prefix that might be in front of the version. Example: `v`'
+  cycle:
+    required: true
+    description: 'The release cycle. Possible values: auto, year, month, week, day'
+  github_token:
+    required: false
+    description: 'GitHub token to talk to the API with'
+
+outputs:
+  newVersion:
+    description: 'The version after the increment'
+  currentVersion:
+    description: 'The version before the increment'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

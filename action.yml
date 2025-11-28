@@ -17,9 +17,13 @@ inputs:
 
 outputs:
   newVersion:
-    description: 'The version after the increment'
+    description: 'The version after the increment (with prefix)'
+  newVersionClean:
+    description: 'The version after the increment (without prefix)'
   currentVersion:
-    description: 'The version before the increment'
+    description: 'The version before the increment (with prefix)'
+  currentVersionClean:
+    description: 'The version before the increment (without prefix)'
 
 runs:
   using: 'node24'

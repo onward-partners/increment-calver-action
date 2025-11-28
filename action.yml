@@ -9,8 +9,8 @@ inputs:
     required: false
     description: 'The prefix that might be in front of the version. Example: `v`'
   cycle:
-    required: true
-    description: 'The release cycle. Possible values: auto, year, month, week, day'
+    required: false
+    description: 'The release cycle. Possible values: auto, year, month, week, day (default: auto)'
   github_token:
     required: false
     description: 'GitHub token to talk to the API with'

@@ -2,8 +2,9 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import { CALVER_CYCLES, type CalVerCycle, clean, cycle, initial, isCycleValid, prefix } from 'calver';
 
+
 async function run(): Promise<void> {
-  const releaseCycle = core.getInput('cycle').toLowerCase() || ('auto' as CalVerCycle);
+  const releaseCycle = (core.getInput('cycle').toLowerCase() || 'auto') as CalVerCycle;
   const token = core.getInput('github_token');
   const tagPrefix = core.getInput('tagPrefix') || undefined;
   let repo = (core.getInput('repo') || undefined)?.split('/');

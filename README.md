@@ -64,14 +64,14 @@ jobs:
     outputs:
       newVersion: ${{ steps.version_increment.outputs.newVersion }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - uses: onward-partners/increment-calver-action@v1
         id: version_increment
         with:
-          branch: ${{ github.event.inputs.type }}
+          cycle: week
           github_token: ${{ secrets.GITHUB_TOKEN }}
   app-a:
     runs-on: ubuntu-latest

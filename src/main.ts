@@ -29,7 +29,7 @@ async function run(): Promise<void> {
   let latestVersion = res.data.filter(release => !release.prerelease)[0]?.tag_name;
   let latestVersionClean: string;
   let newVersion: string;
-  if (!latestVersion) {
+  if (latestVersion) {
     core.info(`ℹ️ Current latest version ${latestVersion}`);
     latestVersionClean = clean(latestVersion);
     core.info(`ℹ️ Current latest version (without prefix) ${latestVersionClean}`);

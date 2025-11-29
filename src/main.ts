@@ -40,10 +40,10 @@ async function run(): Promise<void> {
   const newVersionClean = newVersion;
   newVersion = prefix(newVersion, tagPrefix);
 
-  core.setOutput('newVersion', newVersion);
-  core.setOutput('newVersionClean', newVersionClean);
-  core.setOutput('currentVersion', latestVersion);
-  core.setOutput('currentVersionClean', latestVersionClean);
+  core.setOutput('new-version', newVersion);
+  core.setOutput('new-version-clean', newVersionClean);
+  core.setOutput('current-version', latestVersion);
+  core.setOutput('current-version-clean', latestVersionClean);
   core.info(`ℹ️ Setting new version to ${newVersion}`);
 }
 

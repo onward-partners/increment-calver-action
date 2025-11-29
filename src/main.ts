@@ -26,7 +26,7 @@ async function run(): Promise<void> {
     owner: repo[0]
   });
 
-  let latestVersion = res.data.filter(release => !release.prerelease)[0].tag_name;
+  let latestVersion = res.data.filter(release => !release.prerelease)[0]?.tag_name;
   let latestVersionClean: string;
   let newVersion: string;
   if (!latestVersion) {

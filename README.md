@@ -9,7 +9,7 @@ This action gets the apps affected by the changes since the last successful buil
 The report to check for releases (Defaults to environment variable: `GITHUB_REPOSITORY`).
 Example: `onward-partners/increment-calver-action`
 
-### `tagPrefix`
+### `tag-prefix`
 
 The prefix that might be in front of the version. Example: `v`
 
@@ -17,25 +17,25 @@ The prefix that might be in front of the version. Example: `v`
 
 **Required** The release cycle. Possible values: `auto`, `year`, `month`, `week`, `day`.
 
-### `github_token`
+### `github-token`
 
 **Required if repo is private** Your GitHub access token (see Usage below).
 
 ## Outputs
 
-### `newVersion`
+### `new-version`
 
 The version after the increment (including prefix)
 
-### `newVersionClean`
+### `new-version-clean`
 
 The version after the increment (without prefix)
 
-### `currentVersion`
+### `current-version`
 
 The version before the increment (including prefix)
 
-### `currentVersionClean`
+### `current-version-clean`
 
 The version before the increment (without prefix)
 
@@ -62,14 +62,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Get affected apps
     outputs:
-      newVersion: ${{ steps.version_increment.outputs.newVersion }}
+      new-version: ${{ steps.version_increment.outputs.new-version }}
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - uses: onward-partners/increment-calver-action@v1
-        id: version_increment
+        id: increment-version
         with:
           cycle: week
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -79,5 +79,5 @@ jobs:
     needs: increment-version
     steps:
       - name: Update version in source
-        run: <DO THE UPDATE HERE> ${{ needs.increment-version.output.newVersion }}
+        run: <DO THE UPDATE HERE> ${{ needs.increment-version.output.new-ersion }}
 ```

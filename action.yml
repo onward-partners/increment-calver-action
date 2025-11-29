@@ -5,24 +5,24 @@ inputs:
   repo:
     required: false
     description: 'The report to check for releases. Example: onward-partners/increment-calver-action'
-  tagPrefix:
+  tag-prefix:
     required: false
     description: 'The prefix that might be in front of the version. Example: `v`'
   cycle:
     required: false
     description: 'The release cycle. Possible values: auto, year, month, week, day (default: auto)'
-  github_token:
+  github-token:
     required: false
-    description: 'GitHub token to talk to the API with'
+    description: 'GitHub token to talk to the API with (Required if repo is private)'
 
 outputs:
-  newVersion:
+  new-version:
     description: 'The version after the increment (with prefix)'
-  newVersionClean:
+  new-version-clean:
     description: 'The version after the increment (without prefix)'
-  currentVersion:
+  current-version:
     description: 'The version before the increment (with prefix)'
-  currentVersionClean:
+  current-version-clean:
     description: 'The version before the increment (without prefix)'
 
 runs:

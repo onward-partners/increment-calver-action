@@ -11,6 +11,9 @@ inputs:
   cycle:
     required: false
     description: 'The release cycle. Possible values: auto, year, month, week, day (default: auto)'
+  retrieval-mode:
+    required: false
+    description: 'The mode to get the version. Possible values: tag, release (default: release)'
   github-token:
     required: false
     description: 'GitHub token to talk to the API with (Required if repo is private)'

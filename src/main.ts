@@ -2,9 +2,9 @@ import * as core from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import { CALVER_CYCLES, type CalVerCycle, clean, cycle, initial, isCycleValid, prefix } from 'calver';
 
-
 async function run(): Promise<void> {
-  const releaseCycle = (core.getInput('cycle').toLowerCase() || 'auto') as CalVerCycle;
+  const releaseCycle = (core.getInput('cycle')?.toLowerCase() || 'auto') as CalVerCycle;
+  const mode = core.getInput('retrieval-mode')?.toLowerCase() || 'tag';
   const token = core.getInput('github-token');
   const tagPrefix = core.getInput('tag-prefix') || undefined;
   let repo = (core.getInput('repo') || undefined)?.split('/');
@@ -21,12 +21,21 @@ async function run(): Promise<void> {
   }
 
   const octokit = getOctokit(token);
-  const res = await octokit.rest.repos.listReleases({
-    repo: repo[1],
-    owner: repo[0]
-  });
 
-  let latestVersion = res.data.filter(release => !release.prerelease)[0]?.tag_name;
+  let latestVersion: string | undefined;
+  if (mode === 'tag') {
+    const tagRes = await octokit.rest.repos.listTags({
+      repo: repo[1],
+      owner: repo[0]
+    });
+    latestVersion = tagRes.data[0]?.name;
+  } else {
+    const res = await octokit.rest.repos.listReleases({
+      repo: repo[1],
+      owner: repo[0]
+    });
+    latestVersion = res.data.filter(release => !release.prerelease)[0]?.tag_name;
+  }
   let latestVersionClean: string;
   let newVersion: string;
   if (latestVersion) {

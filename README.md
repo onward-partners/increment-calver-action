@@ -13,9 +13,13 @@ Example: `onward-partners/increment-calver-action`
 
 The prefix that might be in front of the version. Example: `v`
 
+### `retrieval-mode`
+
+The mode to get the version. Possible values: `tag`, `release` (default: `release`).
+
 ### `cycle`
 
-**Required** The release cycle. Possible values: `auto`, `year`, `month`, `week`, `day`.
+The release cycle. Possible values: `auto`, `year`, `month`, `week`, `day` (default: `auto`).
 
 ### `github-token`
 
